@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Mexican Food - Porosit</title>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <style>
+    /* Mobile optimizations */
+    @media only screen and (max-width: 600px) {
+      .container {
+        width: 100%;
+        padding: 0 10px;
+      }
+      .card {
+        margin: 0.5rem 0;
+      }
+      .card-content {
+        padding: 12px;
+      }
+      .card .card-title {
+        font-size: 1.2rem;
+        line-height: 1.4;
+      }
+      /* Mobile cart modal improvements */
+      .modal {
+        width: 95%;
+        max-height: 90%;
+      }
+      .modal .modal-content {
+        padding: 12px;
+      }
+      .modal h4 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .collection .collection-item {
+        padding: 10px;
+      }
+      .collection-item .secondary-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 5px;
+      }
+      .total-section {
+        margin-top: 15px !important;
+      }
+      .total-section h5 {
+        font-size: 1.2rem;
+      }
+      /* Mobile cart button improvements */
+      .sidenav .cart-button {
+        justify-content: flex-start;
+        padding-left: 32px;
+        width: 100%;
+      }
+      .sidenav .cart-button i {
+        margin: 0;
+      }
+      .sidenav .cart-count {
+        margin-left: 8px;
+      }
+    }
+    .card .card-image {
+      height: 200px;
+      overflow: hidden;
+    }
+    .card .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #ff9800;
+    }
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+    }
+    .quantity-selector button {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .quantity-selector span {
+      margin: 0 10px;
+      font-size: 1.1rem;
+    }
+    .cart-button {
+      display: flex !important;
+      align-items: center;
+      gap: 5px;
+    }
+    .cart-count {
+      display: inline-block;
+      background-color: #ff9800;
+      color: white;
+      border-radius: 50%;
+      padding: 0 6px;
+      min-width: 18px;
+      text-align: center;
+      font-size: 12px;
+      height: 18px;
+      line-height: 18px;
+      margin-left: 4px;
+    }
+    /* Cart modal improvements */
+    .collection-item {
+      display: flex !important;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .collection-item .secondary-content {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .collection-item .material-icons {
+      margin-left: 8px;
+      transition: color 0.3s ease;
+    }
+    .collection-item .material-icons:hover {
+      color: #d32f2f !important;
+    }
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      padding: 10px 24px !important;
+    }
+  </style>
+</head>
+<body style="background-image: url(https://background-tiles.com/overview/white/patterns/large/1025.png);background-repeat: repeat;">
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <image src="imgs/logo-restoranti.jpg" class="brand-logo hide-on-small-only" style="width: 5%;"></image>
+      <image src="imgs/logo-restoranti.jpg" class="brand-logo show-on-small hide-on-med-and-up" style="width: 15%;"></image>
+      <ul class="right hide-on-med-and-down">
+        <li><a class="grey-text" href="index.html">Rreth nesh</a></li>
+        <li><a class="grey-text" href="menu.html">Menu</a></li>
+        <li><a class="grey-text" href="sherbime.html">Sherbime</a></li>
+        <li><a class="grey-text" href="kontakte.html">Kontakte</a></li>
+        <li><a href="#cart-modal" class="modal-trigger orange-text cart-button"><i class="material-icons">shopping_cart</i><span class="cart-count">0</span></a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="index.html">Rreth nesh</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="sherbime.html">Sherbime</a></li>
+        <li><a href="kontakte.html">Kontakte</a></li>
+        <li><a href="#cart-modal" class="modal-trigger orange-text cart-button"><i class="material-icons">shopping_cart</i><span class="cart-count">0</span></a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger orange-text"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="section">
+      <h3 class="center-align brown-text">Porosit Tani</h3>
+      
+      <div class="row">
+        <!-- Nachos pule -->
+        <div class="col s12 m6 l4">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://hips.hearstapps.com/hmg-prod/images/chicken-nachos-recipe-64d52a3d46637.jpeg?crop=1xw:0.8434864104967198xh;center,top&resize=1200:*" alt="Nachos pule">
+            </div>
+            <div class="card-content">
+              <span class="card-title">Nachos pule</span>
+              <p class="price">Leke 2000.00</p>
+              <div class="quantity-selector">
+                <button onclick="decrementQuantity(this)"><i class="material-icons">remove</i></button>
+                <span class="quantity">1</span>
+                <button onclick="incrementQuantity(this)"><i class="material-icons">add</i></button>
+              </div>
+            </div>
+            <div class="card-action">
+              <a href="#" class="orange-text" onclick="addToCart(this)">Shto në shportë</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nachos viçi -->
+        <div class="col s12 m6 l4">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://brandsitesplatform-res.cloudinary.com/image/fetch/w_1540,c_scale,q_auto:eco,f_auto,fl_lossy,dpr_1.0,e_sharpen:85/https://assets.brandplatform.generalmills.com%2F-%2Fmedia%2Fproject%2Fgmi%2Foldelpaso%2Foldelpaso-uk%2Foepp%2Frecipes%2Feasy-beef-nachos-hero.jpg%3Fw%3D800%26rev%3D266abbabfdc241ed83f76684317f80b2%201540w" alt="Nachos viçi">
+            </div>
+            <div class="card-content">
+              <span class="card-title">Nachos viçi</span>
+              <p class="price">Leke 2000.00</p>
+              <div class="quantity-selector">
+                <button onclick="decrementQuantity(this)"><i class="material-icons">remove</i></button>
+                <span class="quantity">1</span>
+                <button onclick="incrementQuantity(this)"><i class="material-icons">add</i></button>
+              </div>
+            </div>
+            <div class="card-action">
+              <a href="#" class="orange-text" onclick="addToCart(this)">Shto në shportë</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Taco -->
+        <div class="col s12 m6 l4">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://www.onceuponachef.com/images/2023/08/Beef-Tacos.jpg" alt="Taco">
+            </div>
+            <div class="card-content">
+              <span class="card-title">Taco</span>
+              <p class="price">Leke 700.00</p>
+              <div class="quantity-selector">
+                <button onclick="decrementQuantity(this)"><i class="material-icons">remove</i></button>
+                <span class="quantity">1</span>
+                <button onclick="incrementQuantity(this)"><i class="material-icons">add</i></button>
+              </div>
+            </div>
+            <div class="card-action">
+              <a href="#" class="orange-text" onclick="addToCart(this)">Shto në shportë</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quesedilla -->
+        <div class="col s12 m6 l4">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://cdn.loveandlemons.com/wp-content/uploads/2024/01/quesadilla.jpg" alt="Quesedilla">
+            </div>
+            <div class="card-content">
+              <span class="card-title">Quesedilla</span>
+              <p class="price">Leke 600.00</p>
+              <div class="quantity-selector">
+                <button onclick="decrementQuantity(this)"><i class="material-icons">remove</i></button>
+                <span class="quantity">1</span>
+                <button onclick="incrementQuantity(this)"><i class="material-icons">add</i></button>
+              </div>
+            </div>
+            <div class="card-action">
+              <a href="#" class="orange-text" onclick="addToCart(this)">Shto në shportë</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mulitas -->
+        <div class="col s12 m6 l4">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://thebigmansworld.com/wp-content/uploads/2022/06/mulitas-recipe.jpg" alt="Mulitas">
+            </div>
+            <div class="card-content">
+              <span class="card-title">Mulitas</span>
+              <p class="price">Leke 500.00</p>
+              <div class="quantity-selector">
+                <button onclick="decrementQuantity(this)"><i class="material-icons">remove</i></button>
+                <span class="quantity">1</span>
+                <button onclick="incrementQuantity(this)"><i class="material-icons">add</i></button>
+              </div>
+            </div>
+            <div class="card-action">
+              <a href="#" class="orange-text" onclick="addToCart(this)">Shto në shportë</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chilaquil pule -->
+        <div class="col s12 m6 l4">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://res.cloudinary.com/hksqkdlah/image/upload/24301_sfs-chilaquiles-13.jpg" alt="Chilaquil pule">
+            </div>
+            <div class="card-content">
+              <span class="card-title">Chilaquil pule</span>
+              <p class="price">Leke 1500.00</p>
+              <div class="quantity-selector">
+                <button onclick="decrementQuantity(this)"><i class="material-icons">remove</i></button>
+                <span class="quantity">1</span>
+                <button onclick="incrementQuantity(this)"><i class="material-icons">add</i></button>
+              </div>
+            </div>
+            <div class="card-action">
+              <a href="#" class="orange-text" onclick="addToCart(this)">Shto në shportë</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chilaquil viçi -->
+        <div class="col s12 m6 l4">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT02KiGEkytrdvzeTRIlCDra9RGaLtGiUrjQQ&s" alt="Chilaquil viçi">
+            </div>
+            <div class="card-content">
+              <span class="card-title">Chilaquil viçi</span>
+              <p class="price">Leke 1500.00</p>
+              <div class="quantity-selector">
+                <button onclick="decrementQuantity(this)"><i class="material-icons">remove</i></button>
+                <span class="quantity">1</span>
+                <button onclick="incrementQuantity(this)"><i class="material-icons">add</i></button>
+              </div>
+            </div>
+            <div class="card-action">
+              <a href="#" class="orange-text" onclick="addToCart(this)">Shto në shportë</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chilaquil i perzier -->
+        <div class="col s12 m6 l4">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://www.allrecipes.com/thmb/lLG-vGuAecmWK-YEEg0614z1Adc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/5438840-6beefe3f3af04580b94d6dbb9291a4a4.jpg" alt="Chilaquil i perzier">
+            </div>
+            <div class="card-content">
+              <span class="card-title">Chilaquil i perzier</span>
+              <p class="price">Leke 1500.00</p>
+              <div class="quantity-selector">
+                <button onclick="decrementQuantity(this)"><i class="material-icons">remove</i></button>
+                <span class="quantity">1</span>
+                <button onclick="incrementQuantity(this)"><i class="material-icons">add</i></button>
+              </div>
+            </div>
+            <div class="card-action">
+              <a href="#" class="orange-text" onclick="addToCart(this)">Shto në shportë</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hamburger Fëmijë -->
+        <div class="col s12 m6 l4">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSym3aEdDo7m8Xwe3MUPWs142GxnkmTnUE0PA&s" alt="Hamburger Fëmijë">
+            </div>
+            <div class="card-content">
+              <span class="card-title">Hamburger (Fëmijë) + patate</span>
+              <p class="price">Leke 1000.00</p>
+              <div class="quantity-selector">
+                <button onclick="decrementQuantity(this)"><i class="material-icons">remove</i></button>
+                <span class="quantity">1</span>
+                <button onclick="incrementQuantity(this)"><i class="material-icons">add</i></button>
+              </div>
+            </div>
+            <div class="card-action">
+              <a href="#" class="orange-text" onclick="addToCart(this)">Shto në shportë</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hamburger të rritur -->
+        <div class="col s12 m6 l4">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://www.foodandwine.com/thmb/DI29Houjc_ccAtFKly0BbVsusHc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/crispy-comte-cheesburgers-FT-RECIPE0921-6166c6552b7148e8a8561f7765ddf20b.jpg" alt="Hamburger të rritur">
+            </div>
+            <div class="card-content">
+              <span class="card-title">Hamburger (të rritur) + patate</span>
+              <p class="price">Leke 1500.00</p>
+              <div class="quantity-selector">
+                <button onclick="decrementQuantity(this)"><i class="material-icons">remove</i></button>
+                <span class="quantity">1</span>
+                <button onclick="incrementQuantity(this)"><i class="material-icons">add</i></button>
+              </div>
+            </div>
+            <div class="card-action">
+              <a href="#" class="orange-text" onclick="addToCart(this)">Shto në shportë</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Modal -->
+  <div id="cart-modal" class="modal">
+    <div class="modal-content">
+      <h4>Shporta</h4>
+      <div id="cart-items">
+        <p class="center-align grey-text">Shporta është bosh</p>
+      </div>
+      <div class="total-section" style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee;">
+        <h5>Totali: <span id="cart-total">0</span> Leke</h5>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-red btn-flat hide-on-small-only">Mbyll</a>
+      <a onclick="checkout()" class="waves-effect waves-light btn orange">Checkout</a>
+    </div>
+  </div>
+
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l8 s12">
+          <h5 class="white-text">Rreth nesh</h5>
+          <p class="grey-text text-lighten-4">Jemi nje grup nxenesish nga shkolla Herman Gmeiner</p>
+        </div>
+        <div class="col l4 s12">
+          <h5 class="white-text">Mediat sociale</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Facebook</a></li>
+            <li><a class="white-text" href="#!">WhatsApp</a></li>
+            <li><a class="white-text" href="#!">Instagram</a></li>
+            <li><a class="white-text" href="#!">Tik Tok</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container center">
+      Punoi <a class="white-text" href="#"><strong>Alkeo Cepani</strong></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var modals = document.querySelectorAll('.modal');
+      M.Modal.init(modals);
+      loadCart();
+    });
+
+    let cart = [];
+
+    function loadCart() {
+      const savedCart = localStorage.getItem('cart');
+      if (savedCart) {
+        cart = JSON.parse(savedCart);
+        updateCartDisplay();
+      }
+    }
+
+    function saveCart() {
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartDisplay();
+    }
+
+    function updateCartDisplay() {
+      const cartCounts = document.querySelectorAll('.cart-count');
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      cartCounts.forEach(count => count.textContent = totalItems);
+
+      const cartItemsDiv = document.getElementById('cart-items');
+      const cartTotal = document.getElementById('cart-total');
+      
+      if (cart.length === 0) {
+        cartItemsDiv.innerHTML = '<p class="center-align grey-text">Shporta është bosh</p>';
+        cartTotal.textContent = '0';
+        return;
+      }
+
+      let total = 0;
+      let html = '<ul class="collection">';
+      
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        html += `
+          <li class="collection-item">
+            <div class="item-name">
+              ${item.name}
+            </div>
+            <span class="secondary-content">
+              <span>${item.quantity}x ${item.price} Leke</span>
+              <span class="hide-on-small-only">=</span>
+              <span>${itemTotal} Leke</span>
+              <i class="material-icons red-text" style="cursor: pointer;" onclick="removeFromCart(${index})">delete</i>
+            </span>
+          </li>
+        `;
+      });
+      
+      html += '</ul>';
+      cartItemsDiv.innerHTML = html;
+      cartTotal.textContent = total;
+    }
+
+    function incrementQuantity(button) {
+      const quantitySpan = button.parentElement.querySelector('.quantity');
+      let quantity = parseInt(quantitySpan.textContent);
+      quantitySpan.textContent = quantity + 1;
+    }
+
+    function decrementQuantity(button) {
+      const quantitySpan = button.parentElement.querySelector('.quantity');
+      let quantity = parseInt(quantitySpan.textContent);
+      if (quantity > 1) {
+        quantitySpan.textContent = quantity - 1;
+      }
+    }
+
+    function addToCart(link) {
+      const card = link.closest('.card');
+      const title = card.querySelector('.card-title').textContent;
+      const quantity = parseInt(card.querySelector('.quantity').textContent);
+      const priceText = card.querySelector('.price').textContent;
+      const price = parseInt(priceText.split(' ')[1]);
+
+      const existingItemIndex = cart.findIndex(item => item.name === title);
+      
+      if (existingItemIndex !== -1) {
+        cart[existingItemIndex].quantity += quantity;
+      } else {
+        cart.push({
+          name: title,
+          quantity: quantity,
+          price: price
+        });
+      }
+
+      saveCart();
+      M.toast({html: `${quantity}x ${title} u shtua ne cart!`, classes: 'rounded'});
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      saveCart();
+      M.toast({html: 'Produkti u hoq nga shporta', classes: 'rounded'});
+    }
+
+    function checkout() {
+      cart = [];
+      saveCart();
+      M.toast({html: 'Faleminderit për porosinë!', classes: 'rounded'});
+      var instance = M.Modal.getInstance(document.getElementById('cart-modal'));
+      instance.close();
+    }
+  </script>
+  </body>
+</html> 

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Mexican Food - Sign Up</title>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <style>
+    .error-message {
+      color: #d32f2f;
+      font-size: 0.8rem;
+      margin-top: -10px;
+      margin-bottom: 10px;
+      display: none;
+    }
+    .success-message {
+      color: #388e3c;
+      font-size: 0.8rem;
+      margin-top: -10px;
+      margin-bottom: 10px;
+      display: none;
+    }
+  </style>
+</head>
+<body style="background-image: url(https://background-tiles.com/overview/white/patterns/large/1025.png);background-repeat: repeat;">
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a href="index.html" class="brand-logo orange-text">Mexican Food</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a class="grey-text" href="index.html">Rreth nesh</a></li>
+        <li><a class="grey-text" href="menu.html">Menu</a></li>
+        <li><a class="grey-text" href="sherbime.html">Sherbime</a></li>
+        <li><a class="grey-text" href="kontakte.html">Kontakte</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="index.html">Rreth nesh</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="sherbime.html">Sherbime</a></li>
+        <li><a href="kontakte.html">Kontakte</a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger orange-text"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="section">
+      <div class="row">
+        <div class="col s12 m8 offset-m2 l6 offset-l3">
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title center-align">Sign up</span>
+              <form id="signupForm">
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="first_name" type="text" class="validate" required>
+                    <label for="first_name">Emri</label>
+                    <div class="error-message" id="first_name_error"></div>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="last_name" type="text" class="validate" required>
+                    <label for="last_name">Mbiemri</label>
+                    <div class="error-message" id="last_name_error"></div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="email" type="email" class="validate" required>
+                    <label for="email">Email</label>
+                    <div class="error-message" id="email_error"></div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="username" type="text" class="validate" required>
+                    <label for="username">Username</label>
+                    <div class="error-message" id="username_error"></div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="password" type="password" class="validate" required>
+                    <label for="password">Password</label>
+                    <div class="error-message" id="password_error"></div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="confirm_password" type="password" class="validate" required>
+                    <label for="confirm_password">Konfirmo Password</label>
+                    <div class="error-message" id="confirm_password_error"></div>
+                  </div>
+                </div>
+                <div class="row center">
+                  <button class="btn-large waves-effect waves-light orange lighten-1" type="submit">
+                    Sign up
+                    <i class="material-icons right">person_add</i>
+                  </button>
+                </div>
+                <div class="row center">
+                  <p>Keni një llogari? <a href="login.html" class="orange-text">Login këtu</a></p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l8 s12">
+          <h5 class="white-text">Rreth nesh</h5>
+          <p class="grey-text text-lighten-4">Jemi nje grup nxenesish nga shkolla Herman Gmeiner</p>
+        </div>
+        <div class="col l4 s12">
+          <h5 class="white-text">Mediat sociale</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Facebook</a></li>
+            <li><a class="white-text" href="#!">WhatsApp</a></li>
+            <li><a class="white-text" href="#!">Instagram</a></li>
+            <li><a class="white-text" href="#!">Tik Tok</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container center">
+      Punoi <a class="white-text" href="#"><strong>Alkeo Cepani</strong></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize sidenav
+      var elems = document.querySelectorAll('.sidenav');
+      M.Sidenav.init(elems);
+    });
+
+    function showError(elementId, message) {
+      const errorElement = document.getElementById(elementId);
+      errorElement.textContent = message;
+      errorElement.style.display = 'block';
+    }
+
+    function hideError(elementId) {
+      const errorElement = document.getElementById(elementId);
+      errorElement.style.display = 'none';
+    }
+
+    function validateEmail(email) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email);
+    }
+
+    function validatePassword(password) {
+      return password.length >= 6;
+    }
+
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Hide all error messages
+      const errorElements = document.querySelectorAll('.error-message');
+      errorElements.forEach(element => element.style.display = 'none');
+      
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm_password').value;
+      const email = document.getElementById('email').value;
+      const firstName = document.getElementById('first_name').value;
+      const lastName = document.getElementById('last_name').value;
+
+      let hasError = false;
+
+      // Validate first name
+      if (firstName.length < 2) {
+        showError('first_name_error', 'Emri duhet të ketë të paktën 2 shkronja');
+        hasError = true;
+      }
+
+      // Validate last name
+      if (lastName.length < 2) {
+        showError('last_name_error', 'Mbiemri duhet të ketë të paktën 2 shkronja');
+        hasError = true;
+      }
+
+      // Validate email
+      if (!validateEmail(email)) {
+        showError('email_error', 'Ju lutem shkruani një email të vlefshëm');
+        hasError = true;
+      }
+
+      // Validate username
+      if (username.length < 3) {
+        showError('username_error', 'Username duhet të ketë të paktën 3 karaktere');
+        hasError = true;
+      }
+
+      // Validate password
+      if (!validatePassword(password)) {
+        showError('password_error', 'Fjalëkalimi duhet të ketë të paktën 6 karaktere');
+        hasError = true;
+      }
+
+      // Validate password confirmation
+      if (password !== confirmPassword) {
+        showError('confirm_password_error', 'Fjalëkalimet nuk përputhen');
+        hasError = true;
+      }
+
+      if (hasError) {
+        return;
+      }
+
+      // Store user data in localStorage
+      const userData = {
+        username,
+        password,
+        email,
+        firstName,
+        lastName
+      };
+
+      // Store the user data
+      const users = JSON.parse(localStorage.getItem('users') || '[]');
+      
+      // Check if username already exists
+      if (users.some(user => user.username === username)) {
+        showError('username_error', 'Ky username është i zënë');
+        return;
+      }
+
+      // Check if email already exists
+      if (users.some(user => user.email === email)) {
+        showError('email_error', 'Ky email është i regjistruar');
+        return;
+      }
+
+      users.push(userData);
+      localStorage.setItem('users', JSON.stringify(users));
+      
+      // Auto login after signup
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('currentUser', username);
+      
+      // Show success message
+      M.toast({html: 'Regjistrimi u krye me sukses!', classes: 'green'});
+      
+      // Redirect to the home page or requested page
+      setTimeout(() => {
+        window.location.href = window.location.search.split('redirect=')[1] || 'index.html';
+      }, 1000);
+    });
+  </script>
+</body>
+</html> 
