@@ -8,6 +8,34 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <style>
+    /* Mobile optimizations */
+    @media only screen and (max-width: 600px) {
+      .container {
+        width: 100%;
+        padding: 0 10px;
+      }
+      .input-field {
+        margin-bottom: 0;
+      }
+      .input-field.col.s6 {
+        width: 100%;
+        float: none;
+      }
+      .btn-large {
+        width: 90%;
+        margin: 10px auto;
+        display: block;
+      }
+      .materialize-textarea {
+        min-height: 150px !important;
+      }
+      .section {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+      }
+    }
+  </style>
 </head>
 <body style="background-image: url(https://background-tiles.com/overview/white/patterns/large/1025.png);background-repeat: repeat;">
   <nav class="white" role="navigation">
